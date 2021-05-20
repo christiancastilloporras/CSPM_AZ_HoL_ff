@@ -24,6 +24,24 @@ resource "azurerm_public_ip" "tpot-public" {
   allocation_method   = "Dynamic"
 }
 
+resource "azurerm_network_security_group" "t-pot-NSG" {
+  name                = "acceptanceTestSecurityGroup1"
+  location            = azurerm_resource_group.tpot-RG.location
+  resource_group_name = azurerm_resource_group.tpot-RG.name
+
+  security_rule {
+    name                       = "AllowSSH"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = var.myipaddress
+    destination_address_prefix = "*"
+  }
+}
+
 resource "azurerm_network_interface" "tpot-NIC" {
   name                = "tpot-nic"
   location            = azurerm_resource_group.tpot-RG.location
@@ -36,6 +54,11 @@ resource "azurerm_network_interface" "tpot-NIC" {
     public_ip_address_id          = azurerm_public_ip.tpot-public.id
   }
 }
+
+#resource "azurerm_network_interface_security_group_association" "Association" {
+#  network_interface_id      = azurerm_network_interface.tpot-NIC.id
+#  network_security_group_id = azurerm_network_security_group.t-pot-NSG.id
+#}
 
 resource "azurerm_linux_virtual_machine" "tpot-vm" {
   name                = "Honeypot"

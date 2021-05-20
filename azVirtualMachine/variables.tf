@@ -17,6 +17,10 @@ variable tpot-machinesize {
     default = "Standard_A2_v2"
 }
 
+variable myipaddress {
+    description = "Set your public IP address"
+}
+
 variable ssh-public {
     description = "Public SSH key"
     default = "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlrrfJxWKMdZ7vxxVQDT3P3ROiyAU6ThIrVDxlS5HPDJ+Dpr4tUgfmGo7UI/rH0imvX+cu30yTxcJLimGQTnlBL7+HqK/0DQZM2w1/KYsGZZ2k/og/mobsm6SZEL7pb+OqYBQvieSPj4qLsrqSLywWJHip1lp0bOMq3QZkl1gfYsHGiQI6eWInX/M4LccgUQ53zNIqNOSfX5tOGotVmtiSX/M/OYOSQomdtc3WXLiD8xP23AfS2j/1cH4pCKXDyt/vGj9Ae6ywQrxuBOZfrU78m+HVQu1Xe9VTyCIodqNJN0A+cpg63iWQe2Ln1OJj9y5Dp76GhQUX7feq/zEEpAojQ== Azure Key"
