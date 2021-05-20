@@ -11,7 +11,7 @@ Pasos para instalarlo
 # set to 9 or 10
 DEBIAN_VERSION=10
 
-apt -y install gpg
+apt install -y gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
 sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
 wget -q https://packages.microsoft.com/config/debian/$DEBIAN_VERSION/prod.list
@@ -20,7 +20,7 @@ sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
 sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
 
 Instalar
-sudo apt update && sudo -y apt install azure-functions-core-tools-3
+sudo apt update && sudo apt install -y azure-functions-core-tools-3
 
 Instalar AZ CLI
 
